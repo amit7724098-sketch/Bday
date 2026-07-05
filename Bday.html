@@ -3,298 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Surprise ❤️</title>
+<title>Happy Birthday Neha ❤️</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
-body{
-overflow:hidden;
-background:linear-gradient(135deg,#fff6c5,#f0d9ff);
-}
-
-.page{
-position:absolute;
-width:100%;
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-opacity:0;
-visibility:hidden;
-transform:translateX(100%);
-transition:0.8s;
-}
-
-.page.active{
-opacity:1;
-visibility:visible;
-transform:translateX(0);
-}
-
-h1{
-color:#7a2ff7;
-margin-bottom:20px;
-}
-
-img.main{
-width:220px;
-height:220px;
-object-fit:cover;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.2);
-}
-
-button{
-padding:12px 25px;
-margin:10px;
-border:none;
-border-radius:30px;
-background:#8c52ff;
-color:white;
-font-size:18px;
-cursor:pointer;
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-width:90%;
-max-width:500px;
-}
-
-.gallery img{
-width:100%;
-height:150px;
-object-fit:cover;
-border-radius:15px;
-}
-
-.cardbox{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.card{
-background:white;
-padding:20px;
-border-radius:20px;
-cursor:pointer;
-box-shadow:0 10px 20px rgba(0,0,0,.15);
-}
-
-.letter{
-background:white;
-padding:20px;
-border-radius:20px;
-max-width:700px;
-box-shadow:0 10px 20px rgba(0,0,0,.15);
-}
-
-.heart{
-position:absolute;
-font-size:25px;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-0%{
-transform:translateY(100vh);
-opacity:0;
-}
-20%{
-opacity:1;
-}
-100%{
-transform:translateY(-120px);
-opacity:0;
-}
-}
-</style>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<div class="stars"></div>
+
 <!-- PAGE 1 -->
 
-<div class="page active" id="page1">
+<section class="page active" id="page1">
 
-<h1>I Made Something For You 🎁</h1>
+<div class="hero">
 
-<img class="main" src="photo1.jpg">
+<h1>🎂 Happy Birthday Neha 🎂</h1>
 
-<div>
-<button onclick="showPage(3)">Yes ❤️</button>
-<button onclick="showPage(2)">No 😒</button>
-</div>
+<p class="subtitle">
+A special surprise made only for you ❤️
+</p>
 
-</div>
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600"
+class="hero-img">
 
-<!-- PAGE 2 -->
+<div class="btns">
 
-<div class="page" id="page2">
+<button onclick="nextPage('page2')" class="yes-btn">
+Open Surprise 💝
+</button>
 
-<h1>Seriously? 😤</h1>
-
-<img class="main" src="photo2.jpg">
-
-<button onclick="showPage(1)">Go Back</button>
-
-</div>
-
-<!-- PAGE 3 -->
-
-<div class="page" id="page3">
-
-<h1>That's A Good Girl ❤️</h1>
-
-<img class="main" src="photo3.jpg">
-
-<button onclick="showPage(4)">Click</button>
-
-</div>
-
-<!-- PAGE 4 -->
-
-<div class="page" id="page4">
-
-<h1>🎉 HAPPY BIRTHDAY 🎉</h1>
-
-<h3>May all your dreams come true ❤️</h3>
-
-<button onclick="showPage(5)">Next ➜</button>
-
-</div>
-
-<!-- PAGE 5 -->
-
-<div class="page" id="page5">
-
-<h1>Choose One ❤️</h1>
-
-<div class="cardbox">
-
-<div class="card" onclick="showPage(6)">
-📸 Memories
-</div>
-
-<div class="card" onclick="showPage(7)">
-💌 Letter
-</div>
-
-<div class="card" onclick="showPage(8)">
-🎵 Music
-</div>
+<button id="runBtn" class="no-btn">
+No 🙈
+</button>
 
 </div>
 
 </div>
 
-<!-- MEMORIES -->
+</section>
 
-<div class="page" id="page6">
+<!-- PAGE 2 ENVELOPE -->
 
-<h1>Our Memories ❤️</h1>
+<section class="page" id="page2">
+
+<h2>💌 A Letter For You</h2>
+
+<div class="envelope" onclick="openLetter()">
+
+<div class="envelope-front"></div>
+
+<div class="letter-preview">
+Click To Open
+</div>
+
+</div>
+
+</section>
+
+<!-- PAGE 3 LETTER -->
+
+<section class="page" id="page3">
+
+<div class="letter-box">
+
+<h2>To My Best Friend Neha ❤️</h2>
+
+<p id="typewriter"></p>
+
+<button onclick="nextPage('page4')">
+See Memories 📸
+</button>
+
+</div>
+
+</section>
+
+<!-- PAGE 4 MEMORIES -->
+
+<section class="page" id="page4">
+
+<h2>✨ Beautiful Memories ✨</h2>
 
 <div class="gallery">
 
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
-<img src="photo4.jpg">
+<div class="polaroid">
+<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500">
+<span>Best Smile ❤️</span>
+</div>
+
+<div class="polaroid">
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500">
+<span>Sweet Memories 💕</span>
+</div>
+
+<div class="polaroid">
+<img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=500">
+<span>Stay Happy 🌸</span>
+</div>
+
+<div class="polaroid">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500">
+<span>Always Shine ✨</span>
+</div>
 
 </div>
 
-<br>
+<button onclick="nextPage('page5')">
+Final Surprise 🎁
+</button>
 
-<button onclick="showPage(5)">Back</button>
+</section>
 
-</div>
+<!-- PAGE 5 -->
 
-<!-- LETTER -->
+<section class="page" id="page5">
 
-<div class="page" id="page7">
+<div class="final-card">
 
-<div class="letter">
-
-<h2>Happy Birthday ❤️</h2>
-
-<br>
+<h1>🎉 HAPPY BIRTHDAY NEHA 🎉</h1>
 
 <p>
-You are one of the most special people in my life.
-May this year bring happiness, success, good health,
-and lots of beautiful memories.
-
-Keep smiling and stay blessed. ❤️
+May your smile never fade,
+your dreams come true,
+and your life be filled with happiness,
+success and love ❤️
 </p>
 
-</div>
-
-<br>
-
-<button onclick="showPage(5)">Back</button>
+<button onclick="nextPage('page6')">
+Play Music 🎵
+</button>
 
 </div>
 
-<!-- MUSIC -->
+</section>
 
-<div class="page" id="page8">
+<!-- PAGE 6 -->
 
-<h1>Special Song 🎵</h1>
+<section class="page" id="page6">
 
-<audio controls autoplay>
-<source src="song.mp3" type="audio/mpeg">
+<h2>🎵 Birthday Music</h2>
+
+<audio controls>
+<source src="music/song.mp3" type="audio/mpeg">
 </audio>
 
-<br><br>
+<p>
+You can add any song later.
+</p>
 
-<button onclick="showPage(5)">Back</button>
+<button onclick="nextPage('page1')">
+Start Again ❤️
+</button>
 
-</div>
+</section>
 
-<script>
-
-function showPage(pageNo){
-
-document.querySelectorAll(".page").forEach(p=>{
-p.classList.remove("active");
-});
-
-document.getElementById("page"+pageNo)
-.classList.add("active");
-}
-
-setInterval(()=>{
-
-let heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.innerHTML=Math.random()>0.5?"❤️":"💜";
-
-heart.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},6000);
-
-},400);
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
