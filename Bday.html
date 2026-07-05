@@ -3,42 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Birthday Surprise ❤️</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#fff8d6,#f6e7ff);
 overflow:hidden;
+background:linear-gradient(135deg,#fff6c5,#f0d9ff);
 }
 
 .page{
 position:absolute;
-top:0;
-left:0;
 width:100%;
 height:100vh;
-
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-
-padding:20px;
 text-align:center;
-
+padding:20px;
 opacity:0;
 visibility:hidden;
 transform:translateX(100%);
-transition:.8s;
+transition:0.8s;
 }
 
 .page.active{
@@ -48,11 +41,11 @@ transform:translateX(0);
 }
 
 h1{
-color:#7d3cff;
+color:#7a2ff7;
 margin-bottom:20px;
 }
 
-img{
+img.main{
 width:220px;
 height:220px;
 object-fit:cover;
@@ -60,41 +53,35 @@ border-radius:20px;
 box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
-.buttons{
-display:flex;
-gap:15px;
-margin-top:20px;
-}
-
 button{
 padding:12px 25px;
+margin:10px;
 border:none;
 border-radius:30px;
-background:#8b5cf6;
+background:#8c52ff;
 color:white;
 font-size:18px;
 cursor:pointer;
 }
 
-button:hover{
-transform:scale(1.05);
-}
-
 .gallery{
 display:grid;
-grid-template-columns:repeat(2,150px);
-gap:10px;
-margin-top:20px;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+width:90%;
+max-width:500px;
 }
 
 .gallery img{
-width:150px;
+width:100%;
 height:150px;
+object-fit:cover;
+border-radius:15px;
 }
 
-.menu{
+.cardbox{
 display:flex;
-gap:20px;
+gap:15px;
 flex-wrap:wrap;
 justify-content:center;
 }
@@ -103,27 +90,22 @@ justify-content:center;
 background:white;
 padding:20px;
 border-radius:20px;
-box-shadow:0 10px 20px rgba(0,0,0,.15);
 cursor:pointer;
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
+box-shadow:0 10px 20px rgba(0,0,0,.15);
 }
 
 .letter{
-max-width:700px;
 background:white;
-padding:25px;
+padding:20px;
 border-radius:20px;
+max-width:700px;
 box-shadow:0 10px 20px rgba(0,0,0,.15);
 }
 
-.floating{
+.heart{
 position:absolute;
-font-size:30px;
-animation:float 5s linear infinite;
+font-size:25px;
+animation:float 6s linear infinite;
 }
 
 @keyframes float{
@@ -135,13 +117,13 @@ opacity:0;
 opacity:1;
 }
 100%{
-transform:translateY(-100px);
+transform:translateY(-120px);
 opacity:0;
 }
 }
-
 </style>
 </head>
+
 <body>
 
 <!-- PAGE 1 -->
@@ -150,9 +132,9 @@ opacity:0;
 
 <h1>I Made Something For You 🎁</h1>
 
-<img src="https://picsum.photos/300/300">
+<img class="main" src="photo1.jpg">
 
-<div class="buttons">
+<div>
 <button onclick="showPage(3)">Yes ❤️</button>
 <button onclick="showPage(2)">No 😒</button>
 </div>
@@ -165,9 +147,7 @@ opacity:0;
 
 <h1>Seriously? 😤</h1>
 
-<img src="https://picsum.photos/301/301">
-
-<br><br>
+<img class="main" src="photo2.jpg">
 
 <button onclick="showPage(1)">Go Back</button>
 
@@ -179,9 +159,7 @@ opacity:0;
 
 <h1>That's A Good Girl ❤️</h1>
 
-<img src="https://picsum.photos/302/302">
-
-<br><br>
+<img class="main" src="photo3.jpg">
 
 <button onclick="showPage(4)">Click</button>
 
@@ -193,6 +171,8 @@ opacity:0;
 
 <h1>🎉 HAPPY BIRTHDAY 🎉</h1>
 
+<h3>May all your dreams come true ❤️</h3>
+
 <button onclick="showPage(5)">Next ➜</button>
 
 </div>
@@ -203,7 +183,7 @@ opacity:0;
 
 <h1>Choose One ❤️</h1>
 
-<div class="menu">
+<div class="cardbox">
 
 <div class="card" onclick="showPage(6)">
 📸 Memories
@@ -229,10 +209,10 @@ opacity:0;
 
 <div class="gallery">
 
-<img src="https://picsum.photos/200?1">
-<img src="https://picsum.photos/200?2">
-<img src="https://picsum.photos/200?3">
-<img src="https://picsum.photos/200?4">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
 
 </div>
 
@@ -250,10 +230,14 @@ opacity:0;
 
 <h2>Happy Birthday ❤️</h2>
 
+<br>
+
 <p>
-May all your dreams come true.
-Stay happy, healthy and blessed.
-Thank you for always being special.
+You are one of the most special people in my life.
+May this year bring happiness, success, good health,
+and lots of beautiful memories.
+
+Keep smiling and stay blessed. ❤️
 </p>
 
 </div>
@@ -270,8 +254,8 @@ Thank you for always being special.
 
 <h1>Special Song 🎵</h1>
 
-<audio controls>
-<source src="">
+<audio controls autoplay>
+<source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <br><br>
@@ -284,30 +268,31 @@ Thank you for always being special.
 
 function showPage(pageNo){
 
-document.querySelectorAll('.page').forEach(page=>{
-page.classList.remove('active');
+document.querySelectorAll(".page").forEach(p=>{
+p.classList.remove("active");
 });
 
-document.getElementById('page'+pageNo).classList.add('active');
-
+document.getElementById("page"+pageNo)
+.classList.add("active");
 }
 
 setInterval(()=>{
 
-let heart=document.createElement('div');
+let heart=document.createElement("div");
 
-heart.className='floating';
-heart.innerHTML='❤️';
+heart.className="heart";
 
-heart.style.left=Math.random()*100+'vw';
+heart.innerHTML=Math.random()>0.5?"❤️":"💜";
+
+heart.style.left=Math.random()*100+"vw";
 
 document.body.appendChild(heart);
 
 setTimeout(()=>{
 heart.remove();
-},5000);
+},6000);
 
-},500);
+},400);
 
 </script>
 
