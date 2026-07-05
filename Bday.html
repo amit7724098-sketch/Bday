@@ -5,161 +5,450 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Neha ❤️</title>
 
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
+body{
+overflow-x:hidden;
+background:linear-gradient(-45deg,#6a11cb,#2575fc,#ffd700,#ff69b4);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+min-height:100vh;
+color:white;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.floating{
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+z-index:1;
+}
+
+.heart,.star{
+position:absolute;
+font-size:24px;
+animation:float 10s linear infinite;
+opacity:.8;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh) rotate(0deg);
+}
+to{
+transform:translateY(-120vh) rotate(360deg);
+}
+}
+
+.center{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+flex-direction:column;
+position:relative;
+z-index:5;
+}
+
+.envelope{
+width:250px;
+height:180px;
+background:#fff;
+position:relative;
+cursor:pointer;
+border-radius:8px;
+box-shadow:0 0 40px rgba(255,255,255,.4);
+}
+
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#ff69b4;
+clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+transition:1s;
+}
+
+.open .flap{
+transform:rotateX(180deg);
+}
+
+.click{
+margin-top:30px;
+font-size:22px;
+font-weight:bold;
+}
+
+.hidden{
+display:none;
+}
+
+.section{
+padding:40px 20px;
+text-align:center;
+position:relative;
+z-index:5;
+}
+
+h1{
+font-size:50px;
+margin-bottom:15px;
+text-shadow:0 0 20px white;
+}
+
+.question{
+font-size:28px;
+margin:30px 0;
+}
+
+.btns{
+position:relative;
+height:150px;
+}
+
+button{
+border:none;
+padding:15px 35px;
+font-size:20px;
+border-radius:50px;
+cursor:pointer;
+margin:15px;
+font-weight:bold;
+transition:.3s;
+}
+
+.yes{
+background:#00ff99;
+}
+
+.no{
+background:#ff4444;
+position:absolute;
+}
+
+.polaroids{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+margin-top:30px;
+}
+
+.card{
+background:white;
+padding:10px;
+width:220px;
+border-radius:12px;
+box-shadow:0 0 20px rgba(255,255,255,.4);
+transform:rotate(-3deg);
+}
+
+.card:nth-child(even){
+transform:rotate(4deg);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.card p{
+color:black;
+font-weight:bold;
+margin-top:8px;
+}
+
+.letter{
+max-width:900px;
+margin:auto;
+font-size:22px;
+line-height:1.8;
+padding:30px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+border-radius:20px;
+margin-top:30px;
+min-height:250px;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+z-index:999;
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:34px;
+}
+
+.card{
+width:160px;
+}
+
+.card img{
+height:160px;
+}
+
+.letter{
+font-size:18px;
+}
+}
+</style>
+</head>
 <body>
 
-<div class="stars"></div>
+<canvas id="confetti"></canvas>
 
-<!-- PAGE 1 -->
+<div class="floating" id="floating"></div>
 
-<section class="page active" id="page1">
+<div class="center" id="firstPage">
 
-<div class="hero">
+<div class="envelope" id="env">
+<div class="flap"></div>
+</div>
 
-<h1>🎂 Happy Birthday Neha 🎂</h1>
+<div class="click">💌 Tap Envelope For Surprise Neha 💌</div>
 
-<p class="subtitle">
-A special surprise made only for you ❤️
+</div>
+
+<div id="mainContent" class="hidden">
+
+<section class="section">
+
+<h1>🎂 Happy Birthday Neha ❤️ 🎂</h1>
+
+<p style="font-size:24px">
+A Special Surprise For The Most Amazing Girl ✨
 </p>
 
-<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600"
-class="hero-img">
+<div class="question">
+Do You Want To Open Your Birthday Gift? 🎁
+</div>
 
 <div class="btns">
 
-<button onclick="nextPage('page2')" class="yes-btn">
-Open Surprise 💝
+<button class="yes" onclick="showGallery()">
+Yes ❤️
 </button>
 
-<button id="runBtn" class="no-btn">
-No 🙈
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- PAGE 2 ENVELOPE -->
-
-<section class="page" id="page2">
-
-<h2>💌 A Letter For You</h2>
-
-<div class="envelope" onclick="openLetter()">
-
-<div class="envelope-front"></div>
-
-<div class="letter-preview">
-Click To Open
-</div>
-
-</div>
-
-</section>
-
-<!-- PAGE 3 LETTER -->
-
-<section class="page" id="page3">
-
-<div class="letter-box">
-
-<h2>To My Best Friend Neha ❤️</h2>
-
-<p id="typewriter"></p>
-
-<button onclick="nextPage('page4')">
-See Memories 📸
+<button class="no" id="noBtn">
+No 😜
 </button>
 
 </div>
 
 </section>
 
-<!-- PAGE 4 MEMORIES -->
+<section class="section hidden" id="gallerySection">
 
-<section class="page" id="page4">
+<h1>📸 Beautiful Memories 📸</h1>
 
-<h2>✨ Beautiful Memories ✨</h2>
+<div class="polaroids">
 
-<div class="gallery">
-
-<div class="polaroid">
-<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500">
-<span>Best Smile ❤️</span>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600">
+<p>Always Shine ✨</p>
 </div>
 
-<div class="polaroid">
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500">
-<span>Sweet Memories 💕</span>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600">
+<p>Best Smile ❤️</p>
 </div>
 
-<div class="polaroid">
-<img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=500">
-<span>Stay Happy 🌸</span>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600">
+<p>Stay Happy 🌸</p>
 </div>
 
-<div class="polaroid">
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500">
-<span>Always Shine ✨</span>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600">
+<p>Dream Big ⭐</p>
 </div>
 
 </div>
 
-<button onclick="nextPage('page5')">
-Final Surprise 🎁
-</button>
-
-</section>
-
-<!-- PAGE 5 -->
-
-<section class="page" id="page5">
-
-<div class="final-card">
-
-<h1>🎉 HAPPY BIRTHDAY NEHA 🎉</h1>
-
-<p>
-May your smile never fade,
-your dreams come true,
-and your life be filled with happiness,
-success and love ❤️
-</p>
-
-<button onclick="nextPage('page6')">
-Play Music 🎵
-</button>
-
+<div class="letter">
+<span id="typewriter"></span>
 </div>
 
 </section>
 
-<!-- PAGE 6 -->
+</div>
 
-<section class="page" id="page6">
+<script>
 
-<h2>🎵 Birthday Music</h2>
+const floating=document.getElementById('floating');
 
-<audio controls>
-<source src="music/song.mp3" type="audio/mpeg">
-</audio>
+for(let i=0;i<40;i++){
 
-<p>
-You can add any song later.
-</p>
+let item=document.createElement('div');
 
-<button onclick="nextPage('page1')">
-Start Again ❤️
-</button>
+item.className=Math.random()>0.5?'heart':'star';
 
-</section>
+item.innerHTML=Math.random()>0.5?'💜':'⭐';
 
-<script src="script.js"></script>
+item.style.left=Math.random()*100+'%';
+
+item.style.animationDuration=(6+Math.random()*8)+'s';
+
+item.style.fontSize=(15+Math.random()*25)+'px';
+
+floating.appendChild(item);
+
+}
+
+document.getElementById("env").onclick=function(){
+
+this.classList.add("open");
+
+setTimeout(()=>{
+document.getElementById("firstPage").style.display="none";
+document.getElementById("mainContent").classList.remove("hidden");
+},1000);
+
+};
+
+const noBtn=document.getElementById('noBtn');
+
+noBtn.addEventListener('mouseover',()=>{
+
+const x=Math.random()*250;
+const y=Math.random()*100;
+
+noBtn.style.left=x+'px';
+noBtn.style.top=y+'px';
+
+});
+
+function showGallery(){
+
+document.getElementById('gallerySection').classList.remove('hidden');
+
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:'smooth'
+});
+
+confettiBlast();
+typeMessage();
+
+}
+
+let started=false;
+
+function typeMessage(){
+
+if(started) return;
+started=true;
+
+const text=`Happy Birthday to the most amazing girl and my favorite person! 🎂💖
+
+You make every day brighter just by being yourself. Thank you for all the laughs, the memories, and the countless moments that make our friendship so special. I’m really lucky to have a best friend like you.
+
+May your smile never fade, your dreams come true, and your life be filled with happiness, success, and love. Keep shining, keep being kind, and keep being the wonderful person you are.
+
+Enjoy your special day to the fullest because you deserve all the happiness in the world.
+
+Happy Birthday, Bestie! 🎉✨💕`;
+
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+document.getElementById("typewriter").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,35);
+
+}
+
+}
+
+typing();
+
+}
+
+function confettiBlast(){
+
+const canvas=document.getElementById('confetti');
+const ctx=canvas.getContext('2d');
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const confetti=[];
+
+for(let i=0;i<250;i++){
+
+confetti.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height-canvas.height,
+r:Math.random()*8+2,
+d:Math.random()*250
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+for(let i=0;i<confetti.length;i++){
+
+const c=confetti[i];
+
+ctx.beginPath();
+
+ctx.arc(c.x,c.y,c.r,0,Math.PI*2);
+
+ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;
+
+ctx.fill();
+
+c.y+=3;
+
+if(c.y>canvas.height){
+c.y=-10;
+}
+
+}
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
+
+}
+
+</script>
 
 </body>
 </html>
